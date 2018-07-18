@@ -403,7 +403,8 @@ HTML;
     {
         if ($xmlElement === null) {
             $rootElementName = $this->getXmlRootElementName();
-            $xmlElement = new \SimpleXMLElement("$this->xmlDeclaration<$rootElementName></$rootElementName>");
+            $xmlDeclaration = $this->getXmlDeclaration();
+            $xmlElement = new \SimpleXMLElement("$xmlDeclaration<$rootElementName></$rootElementName>");
         }
 
         foreach ($data as $key => $value) {
