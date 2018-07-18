@@ -25,7 +25,7 @@ class Renderer
     protected $xmlRootElementName = 'root';
     protected $htmlPrefix;
     protected $htmlPostfix;
-    protected $xmlDeclaration = '<?xml version="1.0"?>';
+    protected $xmlDeclaration = '<?xml version="1.0" encoding="UTF-8"?>';
 
     public function __construct($pretty = true)
     {
