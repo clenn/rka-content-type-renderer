@@ -25,6 +25,7 @@ class Renderer
     protected $xmlRootElementName = 'root';
     protected $htmlPrefix;
     protected $htmlPostfix;
+    protected $xmlDeclaration = '<?xml version="1.0"?>';
 
     public function __construct($pretty = true)
     {
@@ -236,6 +237,22 @@ class Renderer
     }
 
     /**
+     * @return string
+     */
+    public function getXmlDeclaration()
+    {
+        return $this->xmlDeclaration;
+    }
+
+    /**
+     * @param string $xmlDeclaration
+     */
+    public function setXmlDeclaration($xmlDeclaration)
+    {
+        $this->xmlDeclaration = $xmlDeclaration;
+    }
+
+    /**
      * Getter for defaultMediaType
      *
      * @return string
@@ -386,7 +403,7 @@ HTML;
     {
         if ($xmlElement === null) {
             $rootElementName = $this->getXmlRootElementName();
-            $xmlElement = new \SimpleXMLElement("<?xml version=\"1.0\"?><$rootElementName></$rootElementName>");
+            $xmlElement = new \SimpleXMLElement("$this->xmlDeclaration<$rootElementName></$rootElementName>");
         }
 
         foreach ($data as $key => $value) {
